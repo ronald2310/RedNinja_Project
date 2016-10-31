@@ -1,15 +1,16 @@
 package controller.tab;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import application.DbConnection;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class clientController {
@@ -31,48 +32,59 @@ public class clientController {
 	@FXML private TextField CCompanyNTF;
 	@FXML private TextField CCompanyTTF;
 	@FXML private TextField CContactTTF;
+	@FXML private TextField CStreetAdTF;
+	@FXML private TextField CCityTF;
+	@FXML private TextField CZipCodeTF;
+	@FXML private TextField CStateTF;
+	@FXML private TextField CConLNameTF;
+	@FXML private TextField CConFNameTF;
+	
 
 	//Insert Client Information to database
-	@FXML private void CInsertBTClicked(ActionEvent event){
+	@FXML private void CInsertBTClicked(ActionEvent event) throws SQLException, ClassNotFoundException{
 		System.out.println("working");
-		
-	    
+	        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+	        String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=Demo-Database;user=user;password=Pass123456";
+	        Connection con = DriverManager.getConnection(connectionURL);
+
+	        System.out.println("You are connected ");
+	        System.out.println(con);
 		
 		//DbConnection connect = new DbConnection(); calling class example
 		
-	
+		
 
 	}
 	// Update Client Information to database
 	@FXML private void CUpdateBTTClicked(ActionEvent event){
+		System.out.println("working");
 
-	
+		
+		final String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=Demo-Database;user=user;password=Pass123456";
+		
+		try
+		{
+			Connection con = DriverManager.getConnection(connectionURL);
 			
-			final String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=Demo-Database;user=user;password=Pass123456";
+			Statement stmt = con.createStatement();
 			
-			try
+			String sqlStatement = "SELECT firstName FROM test";
+			
+			ResultSet result = stmt.executeQuery(sqlStatement);
+			
+			while (result.next())
 			{
-				Connection con = DriverManager.getConnection(connectionURL);
-				
-				Statement stmt = con.createStatement();
-				
-				String sqlStatement = "SELECT firstName FROM test";
-				
-				ResultSet result = stmt.executeQuery(sqlStatement);
-				
-				while (result.next())
-				{
-					System.out.println(result.getString("firstName"));
-				}
-				System.out.println("Connected");
-				con.close();
-				System.out.println("Connection Closed");
+				System.out.println(result.getString("firstName"));
 			}
-			catch(Exception ex)
-			{
-				System.out.println("Error: " + ex.getMessage());
-			}
+			System.out.println("Connected");
+			con.close();
+			System.out.println("Connection Closed");
 		}
+		catch(Exception ex)
+		{
+			System.out.println("Error: " + ex.getMessage());
+		}
+	}
 
 
 
