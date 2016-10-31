@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.input.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="739.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.27728285077951004" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane maxWidth="260.0" minWidth="260.0">
+               <children>
+                  <Button layoutX="22.0" layoutY="126.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="Log In" textFill="#232326" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="82.0">
+                     <effect>
+                        <InnerShadow color="#e32912" />
+                     </effect>
+                  </Button>
+                  <Button layoutX="20.0" layoutY="406.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="View" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="84.0" />
+                  <Button layoutX="22.0" layoutY="168.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="Log Out" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="82.0" />
+                  <Button layoutX="22.0" layoutY="226.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="Update" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="82.0" />
+                  <Button layoutX="22.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="Insert" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="82.0" />
+                  <Button layoutX="22.0" layoutY="307.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="Delete" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="82.0" />
+                  <Label layoutX="14.0" layoutY="617.0" prefHeight="17.0" prefWidth="177.0" text="Logged in as" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="9.0" />
+                  <PasswordField layoutX="21.0" layoutY="86.0" prefHeight="25.0" prefWidth="156.0" text="password" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="83.0" />
+                  <TextField layoutX="21.0" layoutY="55.0" prefHeight="25.0" prefWidth="156.0" text="Username" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="83.0" />
+                  <TextField layoutX="21.0" layoutY="374.0" text="Search" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="30.0" />
+                  <ImageView fitHeight="75.0" fitWidth="68.0" layoutX="183.0" layoutY="36.0" AnchorPane.leftAnchor="183.0" AnchorPane.rightAnchor="9.0">
+                     <image>
+                        <Image url="@493x398.png.abf89ff97f424b78b6c012cb8a131ce1%20(1).avatar" />
+                     </image>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane prefHeight="563.0" prefWidth="651.0">
+               <children>
+                  <TabPane layoutY="22.0" prefHeight="648.0" prefWidth="692.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-22.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="22.0">
+                    <tabs>
+                      <Tab text="View">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="712.0">
+                                 <children>
+                                    <TableView layoutY="13.0" prefHeight="619.0" prefWidth="692.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columns>
+                                        <TableColumn prefWidth="77.0" text="C1" />
+                                        <TableColumn prefWidth="73.0" text="C2" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Create Table">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="382.0" prefWidth="692.0" />
+                        </content>
+                      </Tab>
+                        <Tab text="Report">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="361.0" prefWidth="680.0" />
+                          </content>
+                        </Tab>
+                        <Tab text="Client">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </content>
+                        </Tab>
+                        <Tab text="Vehicle">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="534.0" prefWidth="646.0" />
+                          </content>
+                        </Tab>
+                        <Tab text="Equipment">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="534.0" prefWidth="646.0" />
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <MenuBar blendMode="MULTIPLY" maxHeight="20.0" prefHeight="25.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Export" />
+                  <MenuItem mnemonicParsing="false" text="Import" />
+                  <MenuItem mnemonicParsing="false" text="Quit" />
+            </items>
+               <accelerator>
+                  <KeyCodeCombination alt="UP" code="F" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+               </accelerator>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+         <effect>
+            <Lighting diffuseConstant="0.6">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </MenuBar>
+   </children>
+</AnchorPane>
