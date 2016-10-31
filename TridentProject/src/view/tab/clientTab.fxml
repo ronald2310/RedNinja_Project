@@ -26,5 +26,6 @@
       <TextField fx:id="CZipCodeTF" layoutX="13.0" layoutY="339.0" text="Zip Code" />
       <TextField fx:id="CConFNameTF" layoutX="169.0" layoutY="228.0" text="Contact F.Name" />
       <TextField fx:id="CConLNameTF" layoutX="169.0" layoutY="265.0" text="Contact L.Name" />
+      <Label fx:id="MessageLB" layoutX="81.0" layoutY="50.0" prefHeight="17.0" prefWidth="251.0" text="Label" />
    </children>
 </AnchorPane>

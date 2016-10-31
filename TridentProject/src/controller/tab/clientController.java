@@ -2,6 +2,7 @@ package controller.tab;
 import application.DbConnection;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -39,28 +40,33 @@ public class clientController {
 	@FXML private TextField CConLNameTF;
 	@FXML private TextField CConFNameTF;
 	
+	@FXML private Label MessageLB;
+	
+	String DBName = "TridentDB";
+	String user = "user";
+	String password= "Pass123456";
+	
 
 	//Insert Client Information to database
 	@FXML private void CInsertBTClicked(ActionEvent event) throws SQLException, ClassNotFoundException{
-		System.out.println("working");
-	        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-	        String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=Demo-Database;user=user;password=Pass123456";
-	        Connection con = DriverManager.getConnection(connectionURL);
-
-	        System.out.println("You are connected ");
-	        System.out.println(con);
 		
-		//DbConnection connect = new DbConnection(); calling class example
+		String clientNum = CClientNumTF.getText();
+		String firstName =CFirstNTF.getText();
+		String lastName = CLastNTF.getText();
+		String phoneNumber =  CPhoneNumTF.getText();
+		String email = CemailTF.getText();
+		String companyName = CCompanyNTF.getText();
+		String companyType = CCompanyTTF.getText();
+		String contactTime = CContactTTF.getText();
+		String streetAddress = CStreetAdTF.getText();
+		String city =  CCityTF.getText();
+		String zipCode = CZipCodeTF.getText();
+		String state = CStateTF.getText();
+		String contactFirstName = CConFNameTF.getText();
+		String contactLastName = CConLNameTF.getText();
 		
-		
-
-	}
-	// Update Client Information to database
-	@FXML private void CUpdateBTTClicked(ActionEvent event){
-		System.out.println("working");
-
-		
-		final String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=Demo-Database;user=user;password=Pass123456";
+		 String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=" + DBName + ";user=" + user + ";password=" + password;
+	
 		
 		try
 		{
@@ -68,15 +74,53 @@ public class clientController {
 			
 			Statement stmt = con.createStatement();
 			
-			String sqlStatement = "SELECT firstName FROM test";
+			String sqlStatement = "Insert INTO Client " +
+						"(Client_ID, First_Name, Last_Name, Company_Name, Company_Type, Street_Address, City, "
+						+ "State, Zip_Code, Contact_FName, Contact_LName, Email) " +
+						"VALUES('" + clientNum + "', '" + firstName + "', '" + lastName + "', '" + companyName + "', '" + companyType + "', '" +  streetAddress  + "', '" + city + "', '" + state + "', '" + zipCode + "', '" + contactFirstName + "', '" + contactLastName + "', '" + email + "' )";
+					
+	        stmt.executeQuery(sqlStatement);
+	        
+	       // (Not Working for some reason) MessageLB.setText("Insert Succesful");
+	        
+	    
+			
+	        
+			con.close();
+		 
+		}
+		catch(Exception ex)
+		{
+			System.out.println("Error: " + ex.getMessage());
+		}
+			  
+	}
+		
+
+	
+	// Update Client Information to database
+	@FXML private void CUpdateBTTClicked(ActionEvent event){
+		System.out.println("working");
+
+		 String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=" + DBName + ";user=" + user + ";password=" + password;
+		//final String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=TridentDB;user=user;password=Pass123456";
+		
+		try
+		{
+			Connection con = DriverManager.getConnection(connectionURL);
+			
+			Statement stmt = con.createStatement();
+			
+			String sqlStatement = "SELECT * FROM Client";
 			
 			ResultSet result = stmt.executeQuery(sqlStatement);
 			
 			while (result.next())
 			{
-				System.out.println(result.getString("firstName"));
+				System.out.println(result.getString("Phone_Number"));
+				System.out.println(result.getString("First_Name"));
 			}
-			System.out.println("Connected");
+			//System.out.println("Connected");
 			con.close();
 			System.out.println("Connection Closed");
 		}
@@ -105,5 +149,6 @@ public class clientController {
 		System.out.println("working");
 
 	}
-
+	
+	
 }
