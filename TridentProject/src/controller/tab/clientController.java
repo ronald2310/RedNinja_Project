@@ -1,5 +1,5 @@
 package controller.tab;
-import application.DbConnection;
+
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,19 +26,21 @@ public class clientController {
 
 	// Lets us use our TextFields from our client tab in GUI
 	@FXML private TextField CClientNumTF;
-	@FXML private TextField CFirstNTF;
-	@FXML private TextField CLastNTF;
 	@FXML private TextField CPhoneNumTF;
 	@FXML private TextField CemailTF;
 	@FXML private TextField CCompanyNTF;
 	@FXML private TextField CCompanyTTF;
 	@FXML private TextField CContactTTF;
-	@FXML private TextField CStreetAdTF;
 	@FXML private TextField CCityTF;
 	@FXML private TextField CZipCodeTF;
 	@FXML private TextField CStateTF;
-	@FXML private TextField CConLNameTF;
-	@FXML private TextField CConFNameTF;
+	@FXML private TextField CNameTF;
+	@FXML private TextField CStreetNumTF;
+	@FXML private TextField CStreetNameTF;
+	@FXML private TextField CConNameTF;
+	
+
+	
 	
 	@FXML private Label MessageLB;
 	
@@ -46,24 +48,29 @@ public class clientController {
 	String user = "user";
 	String password= "Pass123456";
 	
-
 	//Insert Client Information to database
 	@FXML private void CInsertBTClicked(ActionEvent event) throws SQLException, ClassNotFoundException{
 		
-		String clientNum = CClientNumTF.getText();
-		String firstName =CFirstNTF.getText();
-		String lastName = CLastNTF.getText();
+	
+		
+		String clientNumText = CClientNumTF.getText();
 		String phoneNumber =  CPhoneNumTF.getText();
 		String email = CemailTF.getText();
 		String companyName = CCompanyNTF.getText();
 		String companyType = CCompanyTTF.getText();
-		String contactTime = CContactTTF.getText();
-		String streetAddress = CStreetAdTF.getText();
+		String contactTimeText = CContactTTF.getText();
 		String city =  CCityTF.getText();
 		String zipCode = CZipCodeTF.getText();
 		String state = CStateTF.getText();
-		String contactFirstName = CConFNameTF.getText();
-		String contactLastName = CConLNameTF.getText();
+		String name = CNameTF.getText();
+		String streetNum =  CStreetNumTF.getText();
+		String streetName = CStreetNameTF.getText();
+		String contactName= CConNameTF.getText();
+
+
+		int clientNum  = Integer.parseInt(clientNumText);
+		int contractTime = Integer.parseInt(contactTimeText);
+	
 		
 		 String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=" + DBName + ";user=" + user + ";password=" + password;
 	
@@ -75,14 +82,13 @@ public class clientController {
 			Statement stmt = con.createStatement();
 			
 			String sqlStatement = "Insert INTO Client " +
-						"(Client_ID, First_Name, Last_Name, Company_Name, Company_Type, Street_Address, City, "
-						+ "State, Zip_Code, Contact_FName, Contact_LName, Email) " +
-						"VALUES('" + clientNum + "', '" + firstName + "', '" + lastName + "', '" + companyName + "', '" + companyType + "', '" +  streetAddress  + "', '" + city + "', '" + state + "', '" + zipCode + "', '" + contactFirstName + "', '" + contactLastName + "', '" + email + "' )";
+						"(ClientId, CompanyName, Name, Email, CompanyType, ContractLength, StreetNumber, StreetName, City, State, ZipCode, PhoneNumber, ContactName) " +
+						"VALUES(" + clientNum + ",'" + companyName + "', '" + name +  "', '" + email + "', '" + companyType + "', " +  contractTime + ", '" + streetNum + "', '" + streetName + "','" + city + "', '" + state +  "', '" + zipCode + "','" + phoneNumber + "', '" + contactName + "')";
 					
 	        stmt.executeQuery(sqlStatement);
 	        
 	       // (Not Working for some reason) MessageLB.setText("Insert Succesful");
-	        
+	       
 	    
 			
 	        
