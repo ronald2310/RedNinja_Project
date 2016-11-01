@@ -11,9 +11,8 @@
         <tabs>
           <Tab closable="false" text="Client">
                <content>
-                  <fx:include fx:id="clienttab" source="tab/clientTab.fxml" />
+                  <fx:include source="tab/clientTab.fxml" />
                </content></Tab>
-          <Tab closable="false" text="Untitled Tab 2" />
         </tabs>
       </TabPane>
    </children>
