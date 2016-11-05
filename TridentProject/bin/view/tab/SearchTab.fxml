@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tab.SearchController">
+   <children>
+      <TableView layoutY="81.0" prefHeight="419.0" prefWidth="712.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0">
+         <columns>
+            <TableColumn prefWidth="77.0" text="C1" />
+            <TableColumn prefWidth="73.0" text="C2" />
+         </columns>
+      </TableView>
+      <ChoiceBox fx:id="STableCB" layoutX="9.0" layoutY="23.0" prefHeight="25.0" prefWidth="164.0" />
+      <TextField fx:id="SSearchTF" layoutX="199.0" layoutY="23.0" prefHeight="25.0" prefWidth="329.0" promptText="Search" />
+      <Button fx:id="SviewBT" layoutX="528.0" layoutY="23.0" mnemonicParsing="false" onAction="#SviewBTClicked" prefHeight="25.0" prefWidth="68.0" text="View" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.tab.SiteController">
+   <children>
+      <AnchorPane layoutX="-4.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="700.0">
+         <children>
+            <Button fx:id="SSearchBT" layoutX="497.0" layoutY="140.0" mnemonicParsing="false" onAction="#SSearchBTClicked" prefHeight="25.0" prefWidth="84.0" style="-fx-background-radius: 10;" text="Search" />
+            <VBox layoutX="44.0" layoutY="142.0" prefHeight="96.0" prefWidth="91.0" spacing="20.0">
+               <children>
+                  <Button fx:id="SInsertBT" layoutX="45.0" layoutY="128.0" mnemonicParsing="false" onAction="#SInsertBTClicked" prefHeight="25.0" prefWidth="91.0" style="-fx-background-radius: 10;" text="Insert" />
+                  <Button fx:id="SDeleteBT" layoutX="45.0" layoutY="161.0" mnemonicParsing="false" onAction="#SDeleteBTClicked" prefHeight="25.0" prefWidth="91.0" style="-fx-background-radius: 10;" text="Delete" />
+                  <Button fx:id="SUpdateBT" layoutX="45.0" layoutY="197.0" mnemonicParsing="false" onAction="#SUpdateBTClicked" prefHeight="25.0" prefWidth="91.0" style="-fx-background-radius: 10;" text="Update" />
+                  <Button fx:id="SClearBT" layoutX="45.0" layoutY="238.0" mnemonicParsing="false" onAction="#SClearBTClicked" prefHeight="25.0" prefWidth="91.0" style="-fx-background-radius: 10;" text="Clear" />
+               </children>
+            </VBox>
+            <GridPane layoutX="177.0" layoutY="140.0" prefHeight="164.0" prefWidth="301.0">
+               <children>
+                  <Label text="Site Name:" GridPane.rowIndex="1" />
+                  <Label text="City:" GridPane.rowIndex="2" />
+                  <Label text="State:" GridPane.rowIndex="3" />
+                  <Label text="Zip Code:" GridPane.rowIndex="4" />
+                  <Label text="Site Description" GridPane.rowIndex="5" />
+                  <TextField fx:id="SsitenameTF" prefHeight="25.0" prefWidth="326.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="ScityTF" prefHeight="25.0" prefWidth="345.0" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="SstateTF" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="SzipcodeTF" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="SsitedescriptionTF" style="-fx-background-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="SsiteIDTF" style="-fx-background-radius: 10;" GridPane.columnIndex="1" />
+                  <Label text="Site ID:" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="95.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="364.0" minWidth="10.0" prefWidth="206.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Label fx:id="SerrormessageLB" layoutX="129.0" layoutY="92.0" prefHeight="17.0" prefWidth="442.0" textFill="#ee3000" />
+            <Label layoutX="228.0" layoutY="39.0" prefHeight="41.0" prefWidth="214.0" text="Site Information" underline="true">
+               <font>
+                  <Font name="Arial Narrow Italic" size="35.0" />
+               </font>
+            </Label>
+            <Label fx:id="SsuccessmessageLB" layoutX="129.0" layoutY="92.0" prefHeight="17.0" prefWidth="442.0" textFill="#0efc41" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
