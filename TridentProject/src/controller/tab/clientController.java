@@ -1,7 +1,9 @@
 package controller.tab;
-import application.DbConnection;
+
+// All needed libraries 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -25,42 +27,109 @@ public class clientController {
 
 	// Lets us use our TextFields from our client tab in GUI
 	@FXML private TextField CClientNumTF;
-	@FXML private TextField CFirstNTF;
-	@FXML private TextField CLastNTF;
 	@FXML private TextField CPhoneNumTF;
 	@FXML private TextField CemailTF;
 	@FXML private TextField CCompanyNTF;
 	@FXML private TextField CCompanyTTF;
 	@FXML private TextField CContactTTF;
-	@FXML private TextField CStreetAdTF;
 	@FXML private TextField CCityTF;
 	@FXML private TextField CZipCodeTF;
 	@FXML private TextField CStateTF;
-	@FXML private TextField CConLNameTF;
-	@FXML private TextField CConFNameTF;
+	@FXML private TextField CNameTF;
+	@FXML private TextField CStreetNumTF;
+	@FXML private TextField CStreetNameTF;
+	@FXML private TextField CConNameTF;
 	
-
+	// Allows Label to be used, Label will give the user feedback whether the button worked.
+	@FXML private Label MessageLB;
+	@FXML private Label ErrorMessageLB1;
+	
+	//Credentials for the database
+	String DBName = "TridentDB";
+	String user = "user";
+	String password= "Pass123456";
+	
 	//Insert Client Information to database
-	@FXML private void CInsertBTClicked(ActionEvent event) throws SQLException, ClassNotFoundException{
-		System.out.println("working");
-	        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-	        String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=Demo-Database;user=user;password=Pass123456";
-	        Connection con = DriverManager.getConnection(connectionURL);
+	@FXML private void CInsertBTClicked(ActionEvent event){
+		
+		MessageLB.setText("");
+		ErrorMessageLB1.setText("");
+		
+		// Gets Text from TexFields and gives it to a String Variable
+		String clientNumText = CClientNumTF.getText();
+		String phoneNumber =  CPhoneNumTF.getText();
+		String email = CemailTF.getText();
+		String companyName = CCompanyNTF.getText();
+		String companyType = CCompanyTTF.getText();
+		String contactTimeText = CContactTTF.getText();
+		String city =  CCityTF.getText();
+		String zipCode = CZipCodeTF.getText();
+		String state = CStateTF.getText();
+		String name = CNameTF.getText();
+		String streetNum =  CStreetNumTF.getText();
+		String streetName = CStreetNameTF.getText();
+		String contactName= CConNameTF.getText();
 
-	        System.out.println("You are connected ");
-	        System.out.println(con);
+		// Changes Text type data to Int type data to follow database rules
+		int clientNum  = Integer.parseInt(clientNumText);
+		int contractTime = Integer.parseInt(contactTimeText);
+	
+		// Uses JDBC to establish connection
+		String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=" + DBName + ";user=" + user + ";password=" + password;
+	
 		
-		//DbConnection connect = new DbConnection(); calling class example
+		try
+		{
+			Connection con = DriverManager.getConnection(connectionURL);
+			
+			Statement stmt = con.createStatement();
+			// Statement inserts Information from Text Field into Database
+			String sqlStatement = "Insert INTO Client " +
+						"(ClientId, CompanyName, Name, Email, CompanyType, ContractLength, StreetNumber, StreetName, City, State, ZipCode, PhoneNumber, ContactName) " +
+						"VALUES(" + clientNum + ",'" + companyName + "', '" + name +  "', '" + email + "', '" + companyType + "', " +  contractTime + ", '" + streetNum + "', '" + streetName + "','" + city + "', '" + state +  "', '" + zipCode + "','" + phoneNumber + "', '" + contactName + "')";
+			// Commits to database		
+		stmt.execute(sqlStatement);
+	         // Closes connection
+			con.close();
+	
+			// Shows Message for Feedback
+			MessageLB.setText("Insert Succesful");
+		} //Catches errors
 		
+		catch(Exception ex)
+		{
+			//Shows error message
+			ErrorMessageLB1.setText("Error: " + ex.getMessage());
+			// MessageLB.setText("Insert Failed");
+		}
 		
-
 	}
 	// Update Client Information to database
 	@FXML private void CUpdateBTTClicked(ActionEvent event){
-		System.out.println("working");
-
 		
-		final String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=Demo-Database;user=user;password=Pass123456";
+		MessageLB.setText("");
+		ErrorMessageLB1.setText("");
+		
+		String clientNumText = CClientNumTF.getText();
+		String phoneNumber =  CPhoneNumTF.getText();
+		String email = CemailTF.getText();
+		String companyName = CCompanyNTF.getText();
+		String companyType = CCompanyTTF.getText();
+		String contactTimeText = CContactTTF.getText();
+		String city =  CCityTF.getText();
+		String zipCode = CZipCodeTF.getText();
+		String state = CStateTF.getText();
+		String name = CNameTF.getText();
+		String streetNum =  CStreetNumTF.getText();
+		String streetName = CStreetNameTF.getText();
+		String contactName= CConNameTF.getText();
+
+
+		int clientNum  = Integer.parseInt(clientNumText);
+		int contractTime = Integer.parseInt(contactTimeText);
+
+		 String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=" + DBName + ";user=" + user + ";password=" + password;
+		//final String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=TridentDB;user=user;password=Pass123456";
 		
 		try
 		{
@@ -68,42 +137,138 @@ public class clientController {
 			
 			Statement stmt = con.createStatement();
 			
-			String sqlStatement = "SELECT firstName FROM test";
+			String sqlStatement = "UPDATE Client " +
+                    "SET CompanyName = '" + companyName + "', Name = '" + name + "', Email = '" + email +  "', CompanyType = '" + companyType + "',"
+                    + " ContractLength = " + contractTime +  ", StreetNumber = '" + streetNum + "', StreetName = '" + streetName + "',"
+                    + " City = '" + city + "', State = '" + state + "', ZipCode = '" + zipCode + "', PhoneNumber = '" + phoneNumber + "', ContactName = '" + contactName + "'   "  +
+                    "WHERE  ClientId = " + clientNum + " ";
+			 stmt.execute(sqlStatement);
 			
-			ResultSet result = stmt.executeQuery(sqlStatement);
-			
-			while (result.next())
-			{
-				System.out.println(result.getString("firstName"));
-			}
-			System.out.println("Connected");
+		
+			//System.out.println("Connected");
 			con.close();
-			System.out.println("Connection Closed");
+			 MessageLB.setText("Update Succesful");
 		}
+		
 		catch(Exception ex)
 		{
-			System.out.println("Error: " + ex.getMessage());
+			ErrorMessageLB1.setText(("Error: " + ex.getMessage() ));
 		}
+		
 	}
-
-
-
-	
 	//Delete Client Information from database
 	@FXML private void  CDeleteBTClicked(ActionEvent event){
-		System.out.println("working");
+		
+		MessageLB.setText("");
+		ErrorMessageLB1.setText("");
+		
+		String clientNumText = CClientNumTF.getText();
+		int clientNum  = Integer.parseInt(clientNumText);
+		
+		 String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=" + DBName + ";user=" + user + ";password=" + password;
+	
+		
+		try
+		{
+			Connection con = DriverManager.getConnection(connectionURL);
+			
+			Statement stmt = con.createStatement();
+			
+			String sqlStatement ="DELETE FROM Client " +
+								 "WHERE ClientId = " + clientNum + "";
+					
+	        stmt.execute(sqlStatement);
+	         
+			con.close();
+			
+			 MessageLB.setText("Delete Succesful"); 
+		}
+		
+		catch(Exception ex)
+		{
+			ErrorMessageLB1.setText(("Error: " + ex.getMessage() ));
+			// MessageLB.setText("Insert Failed");
+		}
+		
 
 
 	}
 	//Clears everything in client GUI
 	@FXML private void CClearBTClicked(ActionEvent event){
-		System.out.println("working");
-
+		MessageLB.setText("");
+		ErrorMessageLB1.setText("");
+		
+		CClientNumTF.clear();
+		CPhoneNumTF.clear();
+		CemailTF.clear();
+		CCompanyNTF.clear();
+		CCompanyTTF.clear();
+		CContactTTF.clear();
+		CCityTF.clear();
+		CZipCodeTF.clear();
+		CStateTF.clear();
+		CNameTF.clear();
+		CStreetNumTF.clear();
+		CStreetNameTF.clear();
+		CConNameTF.clear(); 
+	
+		 MessageLB.setText("Clear Succesful");
+		
+		
 	}
 	//Search for Client information using their CClientNunTF
 	@FXML private void CSearchBTClicked(ActionEvent event){
-		System.out.println("working");
-
+		
+		MessageLB.setText("");
+		ErrorMessageLB1.setText("");
+		
+		 String clientNumText = CClientNumTF.getText();
+			int clientNum  = Integer.parseInt(clientNumText);
+			
+		 String connectionURL = "jdbc:sqlserver://localhost:1433;databaseName=" + DBName + ";user=" + user + ";password=" + password;
+		
+			
+			try
+			{
+				Connection con = DriverManager.getConnection(connectionURL);
+				
+				Statement stmt = con.createStatement();
+				
+				String sqlStatement ="SELECT * FROM Client WHERE ClientId = " + clientNum;
+						
+				ResultSet result = stmt.executeQuery(sqlStatement);
+				
+			 while (result.next())
+			 {
+				 
+					CCompanyNTF.setText((result.getString("CompanyName")));
+					CPhoneNumTF.setText((result.getString("PhoneNumber")));
+					CemailTF.setText((result.getString("Email")));
+					CCompanyTTF.setText((result.getString("CompanyType")));
+					CContactTTF.setText((result.getString("ContractLength"))); // may have to change to int
+					CCityTF.setText((result.getString("City")));
+					CZipCodeTF.setText((result.getString("ZipCode")));
+					CStateTF.setText((result.getString("State")));
+					CNameTF.setText((result.getString("Name")));
+					CStreetNumTF.setText((result.getString("StreetNumber")));
+					CStreetNameTF.setText((result.getString("StreetName")));
+					CConNameTF.setText((result.getString("ContactName"))); 
+					
+					 MessageLB.setText("Search Succesful");
+				
+			 }
+				con.close();
+		
+			
+			}
+			catch(Exception ex)
+			{
+				ErrorMessageLB1.setText(("Error: " + ex.getMessage() ));
+				// MessageLB.setText("Insert Failed");
+			}
+		
+			
 	}
-
+	
+	
 }

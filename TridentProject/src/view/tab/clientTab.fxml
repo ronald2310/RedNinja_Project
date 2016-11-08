@@ -7,24 +7,25 @@
 
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.tab.clientController">
    <children>
-      <TextField fx:id="CClientNumTF" layoutX="95.0" layoutY="79.0" text="Client #" />
-      <TextField fx:id="CFirstNTF" layoutX="13.0" layoutY="117.0" text="First Name" />
-      <TextField fx:id="CLastNTF" layoutX="13.0" layoutY="154.0" text="Last Name" />
-      <TextField fx:id="CCompanyNTF" layoutX="169.0" layoutY="117.0" text="Company Name" />
-      <TextField fx:id="CCompanyTTF" layoutX="169.0" layoutY="154.0" text="Company Type" />
-      <TextField fx:id="CPhoneNumTF" layoutX="13.0" layoutY="191.0" text="Phone Number" />
-      <TextField fx:id="CemailTF" layoutX="13.0" layoutY="228.0" text="Email" />
-      <TextField fx:id="CContactTTF" layoutX="169.0" layoutY="191.0" text="Contract Time" />
+      <TextField fx:id="CClientNumTF" layoutX="95.0" layoutY="79.0" promptText="Client #" />
+      <TextField fx:id="CNameTF" layoutX="13.0" layoutY="117.0" promptText="Name" />
+      <TextField fx:id="CCompanyNTF" layoutX="169.0" layoutY="117.0" promptText="Company Name" />
+      <TextField fx:id="CCompanyTTF" layoutX="169.0" layoutY="154.0" promptText="Company Type" />
+      <TextField fx:id="CPhoneNumTF" layoutX="13.0" layoutY="191.0" promptText="Phone Number" />
+      <TextField fx:id="CemailTF" layoutX="13.0" layoutY="154.0" promptText="Email" />
+      <TextField fx:id="CContactTTF" layoutX="169.0" layoutY="191.0" promptText="Contract Lenght" />
       <Button fx:id="CSearchBT" layoutX="244.0" layoutY="79.0" mnemonicParsing="false" onAction="#CSearchBTClicked" prefHeight="25.0" prefWidth="68.0" text="Search" />
       <Button fx:id="CClearBT" layoutX="289.0" layoutY="14.0" mnemonicParsing="false" onAction="#CClearBTClicked" prefHeight="25.0" prefWidth="91.0" text="Clear" />
       <Button fx:id="CUpdateBT" layoutX="105.0" layoutY="14.0" mnemonicParsing="false" onAction="#CUpdateBTTClicked" prefHeight="25.0" prefWidth="91.0" text="Update" />
       <Button fx:id="CInsertBT" layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#CInsertBTClicked" prefHeight="25.0" prefWidth="91.0" text="Insert" />
       <Button fx:id="CDeleteBT" layoutX="197.0" layoutY="14.0" mnemonicParsing="false" onAction="#CDeleteBTClicked" prefHeight="25.0" prefWidth="91.0" text="Delete" />
-      <TextField fx:id="CStreetAdTF" layoutX="13.0" layoutY="265.0" text="Street Address" />
-      <TextField fx:id="CStateTF" layoutX="13.0" layoutY="376.0" text="State" />
-      <TextField fx:id="CCityTF" layoutX="13.0" layoutY="302.0" text="City" />
-      <TextField fx:id="CZipCodeTF" layoutX="13.0" layoutY="339.0" text="Zip Code" />
-      <TextField fx:id="CConFNameTF" layoutX="169.0" layoutY="228.0" text="Contact F.Name" />
-      <TextField fx:id="CConLNameTF" layoutX="169.0" layoutY="265.0" text="Contact L.Name" />
+      <TextField fx:id="CStreetNameTF" layoutX="13.0" layoutY="265.0" promptText="Street Name" />
+      <TextField fx:id="CStateTF" layoutX="13.0" layoutY="302.0" promptText="State" />
+      <TextField fx:id="CCityTF" layoutX="169.0" layoutY="302.0" promptText="City" />
+      <TextField fx:id="CZipCodeTF" layoutX="169.0" layoutY="265.0" promptText="Zip Code" />
+      <TextField fx:id="CConNameTF" layoutX="169.0" layoutY="228.0" promptText="Contact Name" />
+      <Label fx:id="MessageLB" layoutX="6.0" layoutY="50.0" prefHeight="17.0" prefWidth="442.0" textFill="#33b94c" />
+      <TextField fx:id="CStreetNumTF" layoutX="13.0" layoutY="228.0" promptText="Street Number" />
+      <Label fx:id="ErrorMessageLB1" layoutX="6.0" layoutY="50.0" prefHeight="17.0" prefWidth="442.0" textFill="RED" />
    </children>
 </AnchorPane>
